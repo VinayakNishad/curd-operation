@@ -27,7 +27,7 @@ const Users = () => {
     return (
         <div className='d-flex vh-100 bg-success justify-content-center align-items-center'>
             <div className="w-50 bg-white rounded p-3">
-                <Link to="/createUser" className="btn btn-success fw-bold mb-3">Add +</Link>
+                <Link to="/createUser" className="btn btn-success fw-bold mb-3">Add Employee +</Link>
                 <table className="table">
                     <thead>
                         <tr>
@@ -39,14 +39,14 @@ const Users = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => (
+                            users.map((EmployeeModel, index) => (
                                 <tr key={index}>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.age}</td>
+                                    <td>{EmployeeModel.emp_name}</td>
+                                    <td>{EmployeeModel.emp_email}</td>
+                                    <td>{EmployeeModel.emp_age}</td>
                                     <td>
-                                        <Link to={`/updateUser/${user._id}`} className="btn btn-success">Update</Link>
-                                        <button className="btn btn-danger ms-3" onClick={() => handleDelete(user._id)}>Delete</button>
+                                        <Link to={`/updateUser/${EmployeeModel._id}`} className="btn btn-success">Update</Link>
+                                        <button className="btn btn-danger ms-3" onClick={() => handleDelete(EmployeeModel._id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))

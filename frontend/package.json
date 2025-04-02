@@ -10,13 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.26.10",
+    "@babel/runtime": "^7.27.0",
     "axios": "^1.8.1",
     "bootstrap": "^5.3.3",
+    "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.2.0"
+    "react-router-dom": "^7.2.0",
+    "react-whatsapp": "^0.3.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
     "@eslint/js": "^9.21.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

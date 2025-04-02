@@ -4,9 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios  from "axios";
 const UpdateUser = () => {
     const {id}=useParams()
-    const[name,setName]=useState("")
-    const[email,setEmail]=useState("");
-    const [age,setAge]=useState("")
+    const[emp_name,setName]=useState("")
+    const[emp_email,setEmail]=useState("");
+    const [emp_age,setAge]=useState("")
     const navigate=useNavigate();
 
 
@@ -14,19 +14,19 @@ const UpdateUser = () => {
         axios.get(`http://localhost:3001/getUser/${id}`)
             .then(result => {
                 console.log(result);
-                setName(result.data.name);
-                setEmail(result.data.email);
-                setAge(result.data.age);
+                setName(result.data.emp_name);
+                setEmail(result.data.emp_email);
+                setAge(result.data.emp_age);
             })
             .catch(err => console.log(err));
     }, [id]);
     
     const update = e => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, age })
+        axios.put(`http://localhost:3001/updateUser/${id}`, { emp_name, emp_email, emp_age })
             .then(result => {
                 console.log(result);
-                navigate("/");
+                navigate("/home");
             })
             .catch(err => console.log(err));
     };
@@ -39,19 +39,19 @@ const UpdateUser = () => {
                 <div className="mb-2">
                     <label htmlFor="">Name</label>
                     <input type="text" placeholder='Enter Name' className='form-control'
-                    value={name} onChange={(e)=>{setName(e.target.value)}}
+                    value={emp_name} onChange={(e)=>{setName(e.target.value)}}
                     />
                 </div>
                 <div className="mb-2">
                     <label htmlFor="">Email</label>
                     <input type="email" placeholder='Enter Email' className='form-control'
-                    value={email} onChange={(e)=>{setEmail(e.target.value)}}
+                    value={emp_email} onChange={(e)=>{setEmail(e.target.value)}}
                     />
                 </div>
                 <div className="mb-2">
                     <label htmlFor="">Age</label>
                     <input type="text" placeholder='Enter Age' className='form-control'
-                    value={age} onChange={(e)=>{setAge(e.target.value)}}
+                    value={emp_age} onChange={(e)=>{setAge(e.target.value)}}
                     />
                 </div>
                 <button className="btn btn-success fw-bold m-3 ms-0">Update</button>

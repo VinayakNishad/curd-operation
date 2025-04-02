@@ -4,14 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [admin_email, setEmail] = useState("");
+    const [admin_password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
     
-        axios.post("http://localhost:3001/login", { email, password }, {
+        axios.post("http://localhost:3001/login", { admin_email, admin_password }, {
             headers: { "Content-Type": "application/json" } // Ensure correct format
         })
         .then(result => {
@@ -25,23 +25,23 @@ const Login = () => {
     
     
     return (
-        <div className='d-flex bg-success vh-100 justify-content-center align-items-center'>
-            <div className='w-50 bg-white rounded p-3'>
+        <div className='d-flex bg-light vh-100 justify-content-center align-items-center '>
+            <div className='w-50 bg-white rounded p-3 text-center shadow-lg'>
                 <form onSubmit={handleLogin}>
-                    <h2>Login</h2>
-                    <div className="mb-2">
-                        <label htmlFor="email">Email</label>
-                        <input name='email' type="email" placeholder='Enter Email' className='form-control' id='email' autoComplete='off'
-                            value={email} onChange={(e) => setEmail(e.target.value)}
+                    <h2 className='m-3'>Login</h2>
+                    <div className="mb-3">
+                        <input name='admin_email' type="email" placeholder='Enter Email' className='form-control' id='admin_email' autoComplete='off' Lowercase
+                            value={admin_email} onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className="mb-2">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name='password' placeholder='Enter Password' className='form-control' id='password'
-                            value={password} onChange={(e) => setPassword(e.target.value)}
+                    <div className="mb-3">
+                        <input type="password" name='admin_password' placeholder='Enter Password' className='form-control' id='admin_password'
+                            value={admin_password} onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <button className="btn btn-primary fw-bold mb-3">Login</button>
+                    <div className="mb-3">
+                        <button className="btn btn-success fw-bold mb-3 w-100">Login</button>
+                    </div>
                     <Link to="/">Don't have an account? Sign Up</Link>
                 </form>
             </div>

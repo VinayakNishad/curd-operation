@@ -3,17 +3,17 @@ import axios  from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from 'react-router-dom';
 const CreateUser = () => {
-    const[name,setName]=useState("")
-    const[email,setEmail]=useState("");
-    const [age,setAge]=useState("")
+    const[emp_name,setName]=useState("")
+    const[emp_email,setEmail]=useState("");
+    const [emp_age,setAge]=useState("")
     const navigate=useNavigate();
 
     const Submit=(e)=>{
         e.preventDefault();
-       axios.post("http://localhost:3001/createUser",{name,email,age})
+       axios.post("http://localhost:3001/createUser",{emp_name,emp_email,emp_age})
         .then(result=>{
             console.log(result)
-            navigate("/") })
+            navigate("/home") })
         .catch(err=>console.log(err))}
   return (
     <div className='d-flex bg-success vh-100 justify-content-center align-items-center'>
@@ -23,18 +23,18 @@ const CreateUser = () => {
                 <div className="mb-2">
                     <label htmlFor="name">Name</label>
                     <input type="text" placeholder='Enter Name' className='form-control'
-                        value={name} onChange={(e)=>{setName(e.target.value)}}/>
+                        value={emp_name} onChange={(e)=>{setName(e.target.value)}}/>
                 </div>
                 <div className="mb-2">
                     <label htmlFor="">Email</label>
                     <input type="email" placeholder='Enter Email' className='form-control'
-                        value={email} onChange={(e)=>{setEmail(e.target.value)}}
+                        value={emp_email} onChange={(e)=>{setEmail(e.target.value)}}
                     />
                 </div>
                 <div className="mb-2">
                     <label htmlFor="age">Age</label>
                     <input type="text" placeholder='Enter Age' className='form-control'
-                        value={age} onChange={(e)=>{setAge(e.target.value)}}
+                        value={emp_age} onChange={(e)=>{setAge(e.target.value)}}
                     /></div>
                 <button className="btn btn-success fw-bold mb-3">Submit</button></form>
         </div></div>)}
