@@ -6,6 +6,9 @@ import AdminModel from './Admin.js';
 import multer from 'multer'
 import StudioModel from './Studio.js';
 import path from 'path';
+import fs from "fs";
+import PhotographerSampleModel from './PhotographerSampleSchema.js';
+import Contact from './contact.js';
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
@@ -104,5 +107,90 @@ app.get("/getStudios", async (req, res) => {
     }
 });
 
+
+
+
+
+
+// Route to upload multiple images for a specific studio
+const photographerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const studioId = req.query.studioId; // ✅ Fetch studioId from query parameters
+        if (!studioId) {
+            return cb(new Error("Studio ID is required"), false);
+        }
+        const dir = `./uploads/photographer_samples/${studioId}`;
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+        cb(null, dir);
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const photographerUpload = multer({ storage: photographerStorage });
+
+// ✅ Fix the Upload Route
+app.post("/uploadImages", photographerUpload.array("images", 10), async (req, res) => {
+    try {
+        const { studioId } = req.query; // ✅ Use req.query to get studioId
+        if (!studioId) {
+            return res.status(400).json({ message: "Studio ID is required" });
+        }
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ message: "No images uploaded" });
+        }
+
+        const imagePaths = req.files.map(file => `/uploads/photographer_samples/${studioId}/${file.filename}`);
+        
+        await PhotographerSampleModel.create({ studioId, images: imagePaths });
+
+        res.json({ message: "Images uploaded successfully", images: imagePaths });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+// Get uploaded images for a studio
+app.get("/getPhotographerImages/:studioId", async (req, res) => {
+    try {
+        const { studioId } = req.params;
+        console.log("Requested Studio ID:", studioId); // Debugging log
+
+        if (!studioId) {
+            return res.status(400).json({ message: "Studio ID is required" });
+        }
+
+        const photographerSample = await PhotographerSampleModel.findOne({ studioId });
+
+        if (!photographerSample) {
+            console.log("No images found for this Studio ID");
+            return res.status(404).json({ message: "No images found" });
+        }
+
+        console.log("Found images:", photographerSample.images);
+        res.json({ images: photographerSample.images });
+    } catch (error) {
+        console.error("Error fetching images:", error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// contact section
+
+  // Routes
+  app.post('/contact', async (req, res) => {
+    const { name, email, message } = req.body;
+    try {
+      const newContact = new Contact({ name, email, message });
+      await newContact.save();
+      res.status(200).json({ message: 'Message received' });
+    } catch (error) {
+      res.status(500).json({ error: 'Something went wrong' });
+    }
+  });
 
 app.listen(3001, () => console.log("Server running on port 3001"));
