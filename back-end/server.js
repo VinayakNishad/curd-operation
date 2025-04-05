@@ -7,6 +7,7 @@ import multer from 'multer'
 import StudioModel from './Studio.js';
 import path from 'path';
 import fs from "fs";
+import SubEventModel from './SubEvent.js';
 import PhotographerSampleModel from './PhotographerSampleSchema.js';
 import Contact from './contact.js';
 const app = express();
@@ -193,4 +194,29 @@ app.get("/getPhotographerImages/:studioId", async (req, res) => {
     }
   });
 
+//   SubEvents
+// Add sub-event for a studio
+app.post("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
+    const { studioId } = req.params;
+    const { title, price, description } = req.body;
+  
+    if (!title || !price || !description) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+  
+    const newSubEvent = await SubEventModel.create({
+      studioId,
+      title,
+      price,
+      description
+    });
+  
+    res.status(201).json({ message: "Sub-event added successfully!", subEvent: newSubEvent });
+  }));
+  app.get("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
+    const { studioId } = req.params;
+    const subEvents = await SubEventModel.find({ studioId });
+    res.json(subEvents);
+  }));
+  
 app.listen(3001, () => console.log("Server running on port 3001"));

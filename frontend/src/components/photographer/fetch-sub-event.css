@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --base-clr: #e9e6ff;
+    --line-clr: #E6E6E6;
+    --hover-clr: #b3a9ff;
+    --body-clt: #ffffff;
+    --text-clr: #515151;
+    --accent-clr: #5d47ff;
+    --secondarr-text-clr: #9d91ff;
+    --active-text-clr: #000000;
+    --card-border: #cfcfcf;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+    color: var(--text-clr);
+}
+
+.fetch-sub-events {
+    padding: 0px;
+    margin: 0;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.sub-event-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    box-shadow: 0 2px 5px var(--hover-clr);
+    background: var(--body-clt);
+}
+.sub-event-card:hover {
+    box-shadow: 0 0 4px, 0 0 80px var(--accent-clr) inset;
+    transition: 0.3s;
+}
+
+.sub-event-card h3,strong{
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--active-text-clr);
+}
+
+.error {
+    color: red;
+}
+#sub-event-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}

@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --base-clr:#e9e6ff;
+    --line-clr:#E6E6E6;
+    --hover-clr:#b3a9ff;
+    --body-clt:#ffffff;
+    --text-clr:#515151;
+    --accent-clr:#5d47ff;
+    --secondarr-text-clr:#9d91ff;
+    --active-text-clr:#000000;
+    --card-border:#cfcfcf;
+}
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+html{
+    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+    scroll-behavior: smooth;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--base-clr);
+  }
+  
+  /* Section Headings */
+  .main-container h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  /* Image Section */
+  .image-container {
+    padding: 1rem;
+    background-color: var(--body-clt);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .get-photographer-image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 150px);
+    gap: 1px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line-clr);
+  }
+  
+  /* Specific layout */
+  .grid-cell:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .grid-cell:nth-child(2),
+  .grid-cell:nth-child(3),
+  .grid-cell:nth-child(4),
+  .grid-cell:nth-child(5) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .grid-cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .get-photographer-grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease;
+    display: block;
+  }
+  
+  .get-photographer-grid-image:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Overlays */
+  .overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(25, 25, 25, 0.6);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .more-overlay span,
+  .add-photo-overlay span {
+    line-height: 1.4;
+  }
+  
+  
+  /* Price List Section */
+  .price-list-container {
+    background-color: var(--body-clt);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  

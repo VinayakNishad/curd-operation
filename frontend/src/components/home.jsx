@@ -4,9 +4,12 @@ import "./style.css";
 import Carousel from "./carousel";
 import image from "./images/image.png";
 import Contact from "./contact";
+import About from "./About";
+import Services from "./services";
+import Event from "./event";
 const Home = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [submenuOpen, setSubmenuOpen] = useState({});
+  // const [submenuOpen, setSubmenuOpen] = useState({});
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -19,25 +22,25 @@ const Home = () => {
   return (
     <>
       <header className="header">
-            <nav className="top-bar">
-                <div className="logo">
-                <img src={image} alt="Eventify Logo" />
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div className="search-bar">
-                    <input type="text" placeholder="Search..." id="search"></input>
-                </div>
-                <div className="authentication">
-                    <a href="#" class="active" id="sign-in">Sign In</a>
-                    <a href="#" class="de-active" id="sign-out">Sign Out</a>
-                </div>
-            </nav>
-        </header>
+        <nav className="top-bar">
+          <div className="logo">
+            <img src={image} alt="Eventify Logo" />
+          </div>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div className="search-bar">
+            <input type="text" placeholder="Search..." id="search"></input>
+          </div>
+          <div className="authentication">
+            <a href="#" className="active" id="sign-in">Sign In</a>
+            <a href="#" className="de-active" id="sign-out">Sign Out</a>
+          </div>
+        </nav>
+      </header>
       {/* <aside className="sidebar">
       <nav id="side-bar" className={sidebarOpen ? "open" : "close"}>
         <ul>
@@ -142,154 +145,21 @@ const Home = () => {
         <Carousel />
 
 
-        <section id="home" className="container" >
-          <h1>Event Management</h1>
-          <p>We provide end-to-end event management solutions to ensure your event runs smoothly and successfully. Whether it’s a wedding, corporate gathering, birthday, or product launch, we handle everything from planning to execution.</p>
-          <div className="list_of_event">
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Photographer</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://www.shutterstock.com/image-photo/banquet-hall-tables-chairs-set-600nw-2438817641.jpg"
-                alt="Hall"
-              />
-              <span className="event-title">Hall</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Photographer</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Photographer</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBmdsyuRmujYTZEirqXdzPjvcFy-7zJ_Uy0Oipplas7tx292GksAG5I5QplEGXt4LLRPI&usqp=CAU"
-                alt="Decoration"
-              />
-              <span className="event-title">Decoration</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX7gibV9919nIhXfMlqlltDfq9K3dxCbwrgE1jK9iwHTKpFkmJGbODlXhquMIvKmG_qPw&usqp=CAU"
-                alt="bartender"
-              />
-              <span className="event-title">Bartender</span>
-            </Link>
-          </div>
-          <h2>Packages</h2>
-          <div className="list_of_event">
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Wedding</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://www.shutterstock.com/image-photo/banquet-hall-tables-chairs-set-600nw-2438817641.jpg"
-                alt="Hall"
-              />
-              <span className="event-title">Birthday</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Annivarsary</span>
-            </Link>
-            <Link to="/getStudios" className="event-card">
-              <img
-                src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-                alt="Photographer"
-              />
-              <span className="event-title">Barso</span>
-            </Link>
+        <Event />
+        <Services />
 
-          </div>
+        <About />
+
+        <Contact />
 
 
-        </section>
-        <section id="services" className="container">
-          <h2>Services</h2>
-          <p>We provide a full range of event services to make your special occasion stress-free and memorable. From planning to execution, we handle everything with creativity and precision.</p>
-
-          <div className="service-list">
-            <div className="service-card">
-              <h3>Event Planning</h3>
-              <p>Plan your perfect event with ease! Whether it's a wedding, birthday, corporate event, or any special occasion, we help you bring your vision to life.
-              </p>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKLQLWoVbworZ9nXz40X5KGv4Wj41YNwKRVw&s"
-                alt="event-planning"
-              />
-            </div>
-            <div className="service-card">
-              <h3>Event Management</h3>
-              <p>We turn your dream event into reality with seamless planning and execution.</p>
-              <img 
-                src="https://media.licdn.com/dms/image/v2/C4D12AQHbFAgJm3O16w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1618318102565?e=2147483647&v=beta&t=NKSioZnKzeTuTO97v15fZgB4mT0BUggujs-4Y4tdQ4U"
-                alt="evet-management"
-                />
-            </div>
-            <div className="service-card">
-              <h3>Event Coordinator</h3>
-              <p>An Event Coordinator ensures every aspect of your event runs smoothly, from planning to execution.</p>
-                <img 
-                src="https://cdnl.iconscout.com/lottie/premium/thumb/process-management-animation-download-in-lottie-json-gif-static-svg-file-formats--flow-task-manage-event-business-character-pack-people-animations-4651682.gif"
-                alt="event-coordinator"
-                />
-
-            </div>
-            <div className="service-card" section="services">
-              <h3>Event Marketing</h3>
-              <p>Maximize your event’s reach with strategic marketing that attracts the right audience, boosts engagement, and ensures a successful turnout. </p>
-              <img
-              src="https://media.licdn.com/dms/image/v2/D5612AQHAjuQVVC5-zA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1657725931052?e=2147483647&v=beta&t=buJNrnULUjCwAT8ywrxYNsxLPbFbVG1SnYEqjY73w50"
-              alt="event-marketing"
-              />
-            </div>
-            <div className="service-card">
-              <h3>Event Promotion</h3>
-              <p>Boost attendance and engagement with our expert event promotion strategies! Whether you’re hosting a conference, concert, product launch, or festival, we ensure your event gets the visibility it deserves.</p>
-              <img
-              src="https://cdn.prod.website-files.com/57822c659e1627a433e6a7c6/60a48dad9548b25e0af86768_iC2Aaf5UG2oPx6Kh18wrGewUGDtyVABcPzSmk9Qn5gGIdGWYYhlHASzdh5itfRfhH-QriyDFE612HTsSWVswrgHRyq2lz4JNMMKZ5rGOKlI0b6V-C8OgEE6iwpY-M6cHG7S9un9P.gif"
-              alt="event-promotion"
-              />
-            </div>
-           
-          </div>
-
-        </section>
-        <section id="about" className="container" section="about">
-          <h2>About</h2>
-          <p>At Eventify, we specialize in professional event management, bringing creativity, precision, and seamless execution to every occasion. Whether it’s a wedding, corporate event, birthday, or product launch, our team is dedicated to making your event unforgettable.</p>
-        </section>
-        <section id="contact">
-        <Contact/>
-      </section>
-        
 
 
 
       </main>
       <footer className="footer" >
-    
-        
+
+
         <p>&copy; 2025 Your Company. All rights reserved.</p>
         <ul>
           <li><a href="#">Privacy Policy</a></li>

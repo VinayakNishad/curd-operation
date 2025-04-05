@@ -21,78 +21,20 @@ html{
     scroll-behavior: smooth;
 }
 
-main{
+.main-content{
     display: grid;
     width: 100%;
-    gap: 16px;
+    gap: 0px;
     top:0;
     left:0;
     background-color: var(--body-clt);
 }
-.container{
-    display: grid;
-    border: 1px solid var(--line-clr);
-    border-radius: 1em;
-    margin: 16px;
-    margin-bottom: 20px;
-    padding: min(3em,15%);
-    h1,h2,p {
-        margin-top: 1em;
-    }
-}
-.container form  button{
-    background-color: var(--secondarr-text-clr);
-    color: var(--text-clr);
-    font-weight: 600;
-    width: 180px;
-}
+
 .logo img{
     margin-left: 16px;
     width: 100px;
 }
-.container .service-list{
-    display: grid;
-    grid-auto-flow: column;
-    gap: 16px; /* Adds space between cards */
-    overflow-x: auto;
-}
-.container .service-card{
-    width: 240px;
-    height: 350px;
-    margin-top: 16px;
-    margin-left: 16px;
-    padding: 16px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: var(--body-clt);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.container .service-card img{
-    width: 240px;
-    margin-top: 16px;
 
-}
-.container .service-card:hover{
-    transform: scale(1.02);
-    box-shadow: 0 0 8px , 0  0 2px black;
-}
-.container h4{
-    color: var(--text-clr);
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-.container form  button:hover{
-    background-color: var(--hover-clr);
-    color: var(--text-clr);
-    font-weight: 600;
-    width: 180px;
-    box-shadow: 0px 0px 4px , 0px 0px 4px var(--secondarr-text-clr);
-    transition: 0.5s;
-}
-#container h2{
-    color: var(--accent-clr);
-}
 /* #side-bar{
     box-sizing: border-box;
     height: 600px;
@@ -212,7 +154,7 @@ header{
     position: sticky;
     display: inline-flex;
     top: 0;
-    z-index:2;
+    z-index:1;
 }
 header nav{
     display: flex;
@@ -220,8 +162,8 @@ header nav{
     justify-content: space-around;
     flex-direction: row;
     align-items: center;
-    padding: 8px 16px;
-    margin: 10px;
+    padding: 16px ;
+    margin: 0px;
     background-color:var(--base-clr) ;
     box-shadow: 1px 2px 4px ,0px 0px 0px #000000;
    
@@ -416,58 +358,6 @@ textarea {
     border: 1px solid #ccc;
 }
 
-button {
-    padding: 8px;
-    border-radius: 4px;
-    background: #3e8408;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #2d6900;
-    color: white;
-}
-
-/* Studio list One step in  */
-
-/* Home card photographer */
-.list_of_event{
-    display: flex;
-    overflow-x: scroll;
-}
-.event-card img{
-    width: 240px;
-    height: fit-content;
-    border-radius: 8px 8px 0 0;
- 
-}
-.event-card{
-    display: flex;
-    flex-direction: column;
-    width: 240px;
-    height: 240px;
-    justify-content: start;
-    align-items: center;
-    border-radius: 8px;
-    margin: 16px;
-    border: 1px solid #cfcfcf;
-}
-.event-card:hover{
-    transform: scale(1.02);
-    box-shadow: 0 0 8px , 0  0 2px black;
-}
-.event-title{
-    color: var(--text-clr);
-    text-decoration: none;
-    font-size: large;
-    font-weight: 800;
-    padding-top: 20px;
-}
-.event-title:hover{
-    color: var(--active-text-clr);
-}
 
 
 /* photographer detail */
@@ -500,12 +390,6 @@ button:hover {
 
 
 /* get photographer detail  */
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-}
-
 .photographer-form {
     display: flex;
     flex-direction: column;
@@ -565,48 +449,6 @@ button:hover {
 }
 
 /* //carousel */
-.carousel {
-    position: relative;
-    width: 80%;
-    max-width: 800px;
-    margin: 30px auto;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .carousel img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-  }
-  
-  .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.4);
-    border: none;
-    color: white;
-    font-size: 30px;
-    padding: 8px 12px;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-  }
-  
-  .carousel-btn.left {
-    left: 10px;
-  }
-  
-  .carousel-btn.right {
-    right: 10px;
-  }
-  
-  .carousel-btn:hover {
-    background: rgba(0, 0, 0, 0.6);
-  }
-  
+
 
   /* Carousel one step in  */

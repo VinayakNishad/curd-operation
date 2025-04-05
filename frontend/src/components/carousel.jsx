@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./style.css";
+import React, { useState, useEffect } from "react";
+import "./carousel.css";
 
 const images = [
   "https://picsum.photos/id/1015/800/400",
@@ -11,27 +11,19 @@ const images = [
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); 
 
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="carousel">
-      <button className="carousel-btn left" onClick={goToPrevious}>
-        &#10094;
-      </button>
       <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
-      <button className="carousel-btn right" onClick={goToNext}>
-        &#10095;
-      </button>
     </div>
   );
 };
