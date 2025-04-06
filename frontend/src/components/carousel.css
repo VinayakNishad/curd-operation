@@ -1,0 +1,11 @@
+.carousel {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  .carousel img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
