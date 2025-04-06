@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./sub-event.css"; // Assuming you have a CSS file for styling
-// import UploadImages from "./UploadImages";
+import "./sub-event.css"; 
 const SubEvent = () => {
   const { studioId } = useParams(); // Getting studio ID from the route
   const [title, setTitle] = useState("");
@@ -29,8 +28,6 @@ const SubEvent = () => {
 
   return (
     <div className="sub-event-form">
-      {/* <h2>Add 10 sample images</h2>
-      <UploadImages studioId={studioId} /> */}
       <span><h4>Add Sub Event for Studio ID:</h4>{studioId}</span>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>

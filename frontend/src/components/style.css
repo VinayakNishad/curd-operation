@@ -19,6 +19,7 @@ html{
     font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5rem;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .main-content{

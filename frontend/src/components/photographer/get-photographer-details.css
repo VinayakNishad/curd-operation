@@ -110,5 +110,25 @@ html{
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
+  .Button a{
+    text-decoration: none;
+}
+.Button span{
+    display: flex;
+    background-color: var(--accent-clr);
+    color: var(--body-clt);
+    padding: 8px 16px;
+    width: fit-content;
+    border-radius: 4px;
 
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+.Button{
+    text-decoration: none;
+    height: fit-content;
+}
+.Button span:hover{
+    background-color: var(--hover-clr);
+}
   

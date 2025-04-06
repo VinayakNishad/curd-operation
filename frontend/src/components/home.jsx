@@ -143,28 +143,16 @@ const Home = () => {
 
       <main className="main-content" >
         <Carousel />
-
-
         <Event />
         <Services />
-
         <About />
-
         <Contact />
-
-
-
-
-
       </main>
       <footer className="footer" >
-
-
-        <p>&copy; 2025 Your Company. All rights reserved.</p>
+        <p>&copy; 2025 Eventify Company. All rights reserved.</p>
         <ul>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Contact Us</a></li>
         </ul>
       </footer>
     </>
