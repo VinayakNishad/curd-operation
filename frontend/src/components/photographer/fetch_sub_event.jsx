@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./fetch-sub-event.css"; // Optional for styling
 import { Link } from "react-router-dom";
+import ReactWhatsapp from 'react-whatsapp';
 const FetchSubEvent = () => {
   const { studioId } = useParams(); // Get studioId from route
   const [subEvents, setSubEvents] = useState([]);
@@ -43,6 +44,7 @@ const FetchSubEvent = () => {
                 <p id="sub-event-card-title">{event.title}</p>
                 <p><strong>₹{event.price}</strong> </p>
                 <p>{event.description}</p>
+
               </div>
 
             ))}

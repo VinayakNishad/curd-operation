@@ -19,7 +19,7 @@ const Event = () => {
           <span className="event-title">Photographer</span>
         </Link>
 
-        <Link to="/getStudios" className="event-card">
+        <Link to="/get_halls" className="event-card">
           <img
             src="https://www.shutterstock.com/image-photo/banquet-hall-tables-chairs-set-600nw-2438817641.jpg"
             alt="Hall"

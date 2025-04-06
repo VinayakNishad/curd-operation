@@ -7,6 +7,8 @@ import GetPhotographerDetail from "./components/photographer/GetPhotographerDeta
 import SubEvent from "./components/photographer/sub_event";
 import Contact from "./components/contact";
 import FetchSubEvent from "./components/photographer/fetch_sub_event";
+import Halls from "./components/Hall/addHall";
+import GetHalls from "./components/Hall/get_halls";
 const App = () => {
 
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/subevents/:studioId" element={<SubEvent />} />
         <Route path="/studios/:studioId/subevents" element={<FetchSubEvent />} />
+        <Route path="/add_halls" element={<Halls/>}/>
+        <Route path="/get_halls" element={<GetHalls/>}/>
       </Routes>
     </BrowserRouter>
   );

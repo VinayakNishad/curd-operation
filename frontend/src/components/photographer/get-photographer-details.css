@@ -131,4 +131,11 @@ html{
 .Button span:hover{
     background-color: var(--hover-clr);
 }
-  
+.studio-location{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: start;
+    justify-content: start;
+    margin-top: 16px;
+}

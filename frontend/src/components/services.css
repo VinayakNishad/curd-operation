@@ -56,3 +56,37 @@ html{
     transform: scale(1.02);
     box-shadow: 0 0 8px , 0  0 2px #5d47ff inset;
 }
+.enquire{
+    text-decoration: none;
+    background-color: #515151;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    position: relative;
+    z-index: 1;
+    top: 4px;
+}
+.enquire span{
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+} 
+.enquire a{
+    text-decoration: none;
+    background-color: var(--secondarr-text-clr);
+    color: var(--text-clr);
+    border-radius: 4px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.enquire a:hover{
+    background-color: var(--accent-clr);
+    color: var(--active-text-clr);
+}

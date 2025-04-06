@@ -10,6 +10,7 @@ import fs from "fs";
 import SubEventModel from './SubEvent.js';
 import PhotographerSampleModel from './PhotographerSampleSchema.js';
 import Contact from './contact.js';
+import HallModel from './Hall.js';
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
@@ -218,5 +219,38 @@ app.post("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
     const subEvents = await SubEventModel.find({ studioId });
     res.json(subEvents);
   }));
-  
+
+// Hall 
+app.use('/upload_halls', express.static('upload_halls'));
+
+app.post("/add_halls", upload.single("hall_image"), async (req, res) => {
+    try {
+        const { hall_name, hall_location, hall_description, hall_contact, hall_email } = req.body;
+        const hall_image = req.file ? `/upload_halls/${req.file.filename}` : "";
+        const newHall = await HallModel.create({
+            hall_name,
+            hall_location,
+            hall_description,
+            hall_contact,
+            hall_email,
+            hall_image,
+        });
+
+        res.json({ message: "Hall added successfully!", hall: newHall });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+app.get("/get_halls", async (req, res) => {
+    try {
+        const halls = await HallModel.find();
+        res.json(halls);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+
+
 app.listen(3001, () => console.log("Server running on port 3001"));
