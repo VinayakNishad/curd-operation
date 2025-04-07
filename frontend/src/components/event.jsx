@@ -54,7 +54,7 @@ const Event = (props) => {
 
       <h2>Packages</h2>
       <div className="list_of_event">
-        <Link to="/getStudios" className="event-card">
+        <Link to="/get_package" onClick={() => {props.setPackageType("Wedding");}} className="event-card">
           <img
             src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
             alt="Wedding"
@@ -62,7 +62,7 @@ const Event = (props) => {
           <span className="event-title">Wedding</span>
         </Link>
 
-        <Link to="/getStudios" className="event-card">
+        <Link to="/get_package" onClick={() => {props.setPackageType("Birthday");}} className="event-card">
           <img
             src="https://www.shutterstock.com/image-photo/banquet-hall-tables-chairs-set-600nw-2438817641.jpg"
             alt="Birthday"
@@ -70,7 +70,7 @@ const Event = (props) => {
           <span className="event-title">Birthday</span>
         </Link>
 
-        <Link to="/getStudios" className="event-card">
+        <Link to="/get_package" onClick={() => {props.setPackageType("Anniversary");}} className="event-card">
           <img
             src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
             alt="Anniversary"
@@ -78,12 +78,12 @@ const Event = (props) => {
           <span className="event-title">Anniversary</span>
         </Link>
 
-        <Link to="/getStudios" className="event-card">
+        <Link to="/get_package" onClick={() => {props.setPackageType("Baby Shower");}} className="event-card">
           <img
             src="https://media.licdn.com/dms/image/D4D12AQGPsGZPrLyRow/article-cover_image-shrink_600_2000/0/1691669661170?e=2147483647&v=beta&t=8DeCPVCH3nkxH5dMfiLEWjK3xdq4TkGN372pnld548k"
-            alt="Barso"
+            alt="Baby Shower"
           />
-          <span className="event-title">Barso</span>
+          <span className="event-title">Baby Shower</span>
         </Link>
       </div>
     </section>

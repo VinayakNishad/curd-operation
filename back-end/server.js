@@ -27,6 +27,11 @@ import DecorationStudio from './Decoration/DecorationStudio.js';
 import DecorationSubEvent from './Decoration/DecorationSubEvent.js';
 import DecorationSampleModel from './Decoration/DecorationSampleSchema.js';
 
+import WeddingPackage from './Packages/WeddingPackages.js';
+import AnniversaryPackage from './Packages/AnniversaryPackages.js';
+import BirthdayPackage from './Packages/BirthdayPackages.js';
+import BabyShowerPackage from './Packages/BabyShowerPackages.js';
+
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
@@ -176,9 +181,17 @@ app.get("/getStudios", async (req, res) => {
     try {
         const { service } = req.query;
         // console.log(service);
+
+
+        if (!service) {
+            return res.status(400).json({ message: "Service is required" });
+        }
+
+        // console.log(service);
         let studios;
 
         if (service == 'Photographer') {
+
             studios = await PhotogapherStudio.find();
         }
         else if (service == 'Hall') {
@@ -193,6 +206,7 @@ app.get("/getStudios", async (req, res) => {
         else if (service == 'Bartender') {
             studios = await BartenderStudio.find();
         }
+
 
         res.json(studios);
     } catch (error) {
@@ -245,7 +259,7 @@ app.post("/uploadImages", ServiceUpload.array("images", 10), async (req, res) =>
         if (!studioId || !service) {
             return res.status(400).json({ message: "Studio ID and Service is required" });
         }
-        
+
 
         if (service == 'Photographer') {
             await PhotographerSampleModel.create({ studioId, images: imagePaths });
@@ -282,7 +296,7 @@ app.get("/getPhotographerImages/:studioId", async (req, res) => {
         }
 
         let photographerSample;
-        
+
 
         if (service == 'Photographer') {
             photographerSample = await PhotographerSampleModel.findOne({ studioId });
@@ -333,7 +347,7 @@ app.post("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
     const { studioId } = req.params;
     const { title, price, description, service } = req.body;
     // console.log("Service:(from body)"+service);
-    
+
 
     if (!title || !price || !description) {
         return res.status(400).json({ message: "All fields are required" });
@@ -387,7 +401,7 @@ app.get("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
     const { studioId } = req.params;
     const { service } = req.query;
     // console.log("Service:(from query)"+service);
-    
+
 
     let subEvents;
 
@@ -408,5 +422,132 @@ app.get("/studios/:studioId/subevents", asyncHandler(async (req, res) => {
     }
     res.json(subEvents);
 }));
+
+
+// Route to add package
+const package_storage = multer.diskStorage({
+    destination: "./upload_package/",
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    }
+});
+
+
+
+app.post("/add_package", upload.single("package_image"), async (req, res) => {
+    try {
+        const {
+            package_name,
+            package_price,
+            package_photographer,
+            package_caterer,
+            package_hall,
+            package_bartender,
+            package_decoration,
+            package_description
+        } = req.body;
+
+        // console.log(req.query.packageType);
+
+
+        // console.log(typeof package_photographer);
+
+        const packageType = req.query.packageType;
+        if (!packageType) {
+            return res.status(400).json({ message: "Package type is required" });
+        }
+
+        let newPackage;
+        if (packageType == "Wedding") {
+            newPackage = new WeddingPackage({
+                package_name,
+                package_price,
+                package_photographer,
+                package_caterer,
+                package_hall,
+                package_bartender,
+                package_decoration,
+                package_description,
+                package_image: req.file ? req.file.path : ""
+            });
+        }
+        else if (packageType == "Birthday") {
+            newPackage = new BirthdayPackage({
+                package_name,
+                package_price,
+                package_photographer,
+                package_caterer,
+                package_hall,
+                package_bartender,
+                package_decoration,
+                package_description,
+                package_image: req.file ? req.file.path : ""
+            });
+        }
+        else if (packageType == "Anniversary") {
+            newPackage = new AnniversaryPackage({
+                package_name,
+                package_price,
+                package_photographer,
+                package_caterer,
+                package_hall,
+                package_bartender,
+                package_decoration,
+                package_description,
+                package_image: req.file ? req.file.path : ""
+            });
+        }
+        else if (packageType == "Baby Shower") {
+            newPackage = new BabyShowerPackage({
+                package_name,
+                package_price,
+                package_photographer,
+                package_caterer,
+                package_hall,
+                package_bartender,
+                package_decoration,
+                package_description,
+                package_image: req.file ? req.file.path : ""
+            })
+        }
+
+        await newPackage.save();
+        res.status(200).json({ message: "Package added successfully" });
+    } catch (error) {
+        console.error("Error adding package:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+app.get("/get_packages", async (req, res) => {
+    try {
+        const packageType = req.query.packageType;
+        if (!packageType) {
+            return res.status(400).json({ message: "Package type is required" });
+        }
+
+
+        if (packageType == "Wedding") {
+            const packages = await WeddingPackage.find();
+            res.send(packages);
+        }
+        else if (packageType == "Birthday") {
+            const packages = await BirthdayPackage.find();
+            res.json(packages);
+        }
+        else if (packageType == "Anniversary") {
+            const packages = await AnniversaryPackage.find();
+            res.json(packages);
+        }
+        else if (packageType == "Baby Shower") {
+            const packages = await BabyShowerPackage.find();
+            res.json(packages);
+        }
+
+    } catch (error) {
+        console.error("Error fetching packages:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 
 app.listen(3001, () => console.log("Server running on port 3001"));

@@ -1,0 +1,8 @@
+.services{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    gap: 2rem;
+}

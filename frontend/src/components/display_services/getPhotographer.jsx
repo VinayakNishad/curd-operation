@@ -31,10 +31,9 @@ const GetStudios = (props) => {
   return (
     <div className="container-details">
       <h2>{props.service}'s in Goa</h2>
-      {props.service}
       <CarouselOneStep />
       <Link to="/addStudios" className="Button">
-        <span className="event-title">Add Studios</span>
+        <span className="event-title">Add {props.service || "Studio"}</span>
       </Link>
       {studios.length === 0 ? (
         <p>No studios found.</p>
