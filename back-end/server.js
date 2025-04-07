@@ -11,6 +11,8 @@ import SubEventModel from './SubEvent.js';
 import PhotographerSampleModel from './PhotographerSampleSchema.js';
 import Contact from './contact.js';
 import HallModel from './Hall.js';
+import PackageModel from "./Package.js"; 
+import UserDataModel from './user_data.js';
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
@@ -250,7 +252,98 @@ app.get("/get_halls", async (req, res) => {
     }
 });
 
+// Route to add package
+const package_storage = multer.diskStorage({
+    destination: "./upload_package/",
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Unique filename
+    }
+});
 
 
 
+app.post("/add_package", upload.single("package_image"), async (req, res) => {
+    try {
+        const {
+            package_name,
+            package_price,
+            package_photographer,
+            package_caterer,
+            package_hall,
+            package_bertender,
+            package_decoration,
+            package_description
+        } = req.body;
+
+        const newPackage = new PackageModel({
+            package_name,
+            package_price,
+            package_photographer,
+            package_caterer,
+            package_hall,
+            package_bertender,
+            package_decoration,
+            package_description,
+            package_image: req.file ? req.file.path : ""
+        });
+
+        await newPackage.save();
+        res.status(200).json({ message: "Package added successfully" });
+    } catch (error) {
+        console.error("Error adding package:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+app.get("/get_packages", async (req, res) => {
+    try {
+        const packages = await PackageModel.find();
+        res.json(packages);
+    } catch (error) {
+        console.error("Error fetching packages:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+// POST: Save user enquiry
+app.post("/user_form", async (req, res) => {
+    try {
+      const { user_name, email, location, phone, package_id } = req.body;
+  
+      const newUserData = new UserDataModel({
+        user_name,
+        email,
+        location,
+        phone,
+        package_id
+      });
+  
+      await newUserData.save();
+      res.status(201).json({ message: "User enquiry saved successfully!" });
+    } catch (error) {
+      console.error("Error saving user data:", error);
+      res.status(500).json({ message: "Failed to save user data." });
+    }
+  });
+  
+  app.get("/admin_home", async (req, res) => {
+    try {
+      const users = await UserDataModel.find();
+      const enrichedUsers = await Promise.all(
+        users.map(async (user) => {
+          const pkg = await PackageModel.findById(user.package_id);
+          return {
+            ...user._doc,
+            packageDetails: pkg || null
+          };
+        })
+      );
+  
+      res.json(enrichedUsers);
+    } catch (error) {
+      console.error("Error fetching admin dashboard data:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+  
 app.listen(3001, () => console.log("Server running on port 3001"));

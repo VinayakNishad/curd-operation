@@ -65,11 +65,12 @@ html{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .studio-contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     text-wrap: nowrap;
     gap: 8px;
     font-weight: bold;
+    width: 40%;
 }
 .studio-contact a {
     color: var(--body-clt);
@@ -77,13 +78,13 @@ html{
     display: flex;
     flex-direction: row;
     font-weight: 600;
-    padding: 8px;
+    padding: 8px 16px;
+    width: fit-content;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    border: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    background-color: var(--secondarr-text-clr);
+    background-color: var(--accent-clr);
     transition: 0.3s;
 }
 .studio-contact a span{
@@ -92,14 +93,9 @@ html{
     align-items: center;
 }
 .studio-contact a:hover {
-    text-decoration: none;
     color: var(--active-text-clr);
-    padding: 8px;
-    justify-content: center;
-    border-radius: 4px;
-    border: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    background-color: var(--accent-clr);
+    background-color: var(--secondarr-text-clr);
     transition: 0.3s;
 }
 .carouselOneStep {

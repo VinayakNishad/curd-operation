@@ -9,6 +9,12 @@ import Contact from "./components/contact";
 import FetchSubEvent from "./components/photographer/fetch_sub_event";
 import Halls from "./components/Hall/addHall";
 import GetHalls from "./components/Hall/get_halls";
+import Package from "./components/Packages/add-package";
+import GetPackage from "./components/Packages/get_package";
+import Login from "./components/Login";
+import UserForm from "./components/Packages/Userform";
+import AdminDashboard from "./components/Packages/admin_home";
+
 const App = () => {
 
   return (
@@ -25,6 +31,12 @@ const App = () => {
         <Route path="/studios/:studioId/subevents" element={<FetchSubEvent />} />
         <Route path="/add_halls" element={<Halls/>}/>
         <Route path="/get_halls" element={<GetHalls/>}/>
+        <Route path="/add_package" element={<Package/>}/>
+        <Route path="/get_package" element={<GetPackage/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/user_form/:packageId" element={<UserForm />} />
+        <Route path="/admin_home" element={<AdminDashboard/>}/>
+
       </Routes>
     </BrowserRouter>
   );
