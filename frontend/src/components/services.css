@@ -36,23 +36,60 @@ html{
     gap: 16px; /* Adds space between cards */
     overflow-x: auto;
 }
-.services-section .service-card{
+.services-section .service-card {
     width: 240px;
-    height: 350px;
+    height: 450px;
     margin: 24px 16px;
     padding: 16px;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--body-clt);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.services-section .service-card img{
-    width: 240px;
-    margin-top: 16px;
 
+.service-card img{
+    width: 200px;
+    margin-top: 16px;
 }
+
 .services-section .service-card:hover{
     transform: scale(1.02);
     box-shadow: 0 0 8px , 0  0 2px #5d47ff inset;
+}
+.enquire{
+    text-decoration: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    position: relative;
+    z-index: 1;
+    top: 4px;
+    margin-top: auto;
+}
+.enquire span{
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+} 
+.enquire a{
+    text-decoration: none;
+    background-color: var(--accent-clr);
+    color: var(--base-clr);
+    border-radius: 4px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+.enquire a:hover{
+    background-color: var(--accent-clr);
+    color: var(--active-text-clr);
+    box-shadow: 0 0 4px,0 0 4px black;
 }

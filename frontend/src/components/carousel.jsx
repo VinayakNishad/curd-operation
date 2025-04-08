@@ -23,7 +23,11 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
-      <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
+     <div className="carousel-text"> 
+     <h1>Welcome to Eventify</h1>
+     <p>We provide you the services to make your event more special and memoreble.</p>
+     </div>
+      <img className="intro-carousel-image" src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
     </div>
   );
 };

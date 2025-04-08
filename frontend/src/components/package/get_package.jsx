@@ -1,22 +1,42 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../style.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import DisplayService from "./display_service";
 
-import './package.css'
+import './get-package.css'
+
+import Modal from 'react-bootstrap/Modal';
+
+import UpdatePackage from "./update-package"
+
+const ModalComponent = (props) => {
+  return (
+    <Modal show={props.show} fullscreen={true} onHide={() => props.setShow(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Samples</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <UpdatePackage pkg={props.pkg} setShow={props.setShow} packageType={props.packageType}/>
+      </Modal.Body>
+    </Modal>
+  )
+}
+
 
 const GetPackage = (props) => {
   const [packages, setPackages] = useState([]);
   const navigate = useNavigate();
 
+  const [show, setShow] = useState(false);
+  const [currentPackage, setCurrentPackage] = useState(null);
+
   useEffect(() => {
     const fetchPackages = async () => {
       try {
         // console.log("Get Package: ",props.packageType);
-        
+
         const response = await axios.get("http://localhost:3001/get_packages", {
           params: {
             packageType: props.packageType,
@@ -29,7 +49,7 @@ const GetPackage = (props) => {
     };
 
     fetchPackages();
-  }, []);
+  }, [show]);
 
   // 🔍 Fetch studioID based on photographer name
   const handlePhotographerClick = async (name, serviceType) => {
@@ -55,41 +75,52 @@ const GetPackage = (props) => {
     }
   };
 
-  return (
-    <div className="container">
-      <h2>All Packages</h2>
-      <div className="card-grid">
-        {
-          packages.length < 0 ? (
-            <p>No packages found.</p>) : (
-            packages.map((pkg) => (
-              <div className="card" key={pkg._id}>
-                {/* <img
-                  src={`http://localhost:3001/${pkg.package_image}`}
-                  alt={pkg.package_name}
-                  className="card-img"
-                /> */}
-                <div className="card-body">
-                  <h3>{pkg.package_name}</h3>
-                  <strong> ₹{pkg.package_price}</strong>
-                  <div className="services">
-                    <DisplayService parsed={pkg.package_photographer} handlePhotographerClick={handlePhotographerClick} serviceType="Photographer" setService={props.setService} />
-                    <DisplayService parsed={pkg.package_hall} handlePhotographerClick={handlePhotographerClick} serviceType="Hall" setService={props.setService} />
-                    <DisplayService parsed={pkg.package_caterer} handlePhotographerClick={handlePhotographerClick} serviceType="Caterer" setService={props.setService} />
-                    <DisplayService parsed={pkg.package_bertender} handlePhotographerClick={handlePhotographerClick} serviceType="Bertender" setService={props.setService} />
-                    <DisplayService parsed={pkg.package_decoration} handlePhotographerClick={handlePhotographerClick} serviceType="Decoration" setService={props.setService} />
-                  </div>
-                  <p><strong>Description:</strong> {pkg.package_description}</p>
-                  <div className="enquire-link">
-                    <Link to={`/user_form/${pkg._id}`} className="admin-link">Enquire Now!</Link>
-                  </div>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-                </div>
-              </div>
-            ))
-          )
+  return (
+    <div className="package_box">
+      <ModalComponent setShow={setShow} show={show} handleClose={handleClose} pkg={currentPackage} packageType={props.packageType}/>
+      <div className="package-container">
+        <h2>All Packages</h2>
+        {
+          props.admin ?
+            <Link to={"/add_package"} className="add_package">Add Package</Link> : ""
         }
-        <Link to={"/add_package"}>Add Package</Link>
+        <div className="package-card-grid">
+          {
+            packages.length < 0 ? (
+              <p>No packages found.</p>) : (
+              packages.map((pkg) => (
+                <div className="package-card" key={pkg._id}>
+                  {
+                    props.admin? 
+                    <div className="edit-btn-container">
+                    <button className="edit-btn"  onClick={() => { handleShow(); setCurrentPackage(pkg);}}>Edit</button>
+                  </div>:""
+                  }
+                  <div className="package-card-body">
+                    <h3>{pkg.package_name}</h3>
+                    <strong> ₹{pkg.package_price}</strong>
+                    <div className="package-services">
+                      <DisplayService className="display-service" parsed={pkg.package_photographer} handlePhotographerClick={handlePhotographerClick} serviceType="Photographer" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_hall} handlePhotographerClick={handlePhotographerClick} serviceType="Hall" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_caterer} handlePhotographerClick={handlePhotographerClick} serviceType="Caterer" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_bartender} handlePhotographerClick={handlePhotographerClick} serviceType="Bertender" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_decoration} handlePhotographerClick={handlePhotographerClick} serviceType="Decoration" setService={props.setService} />
+                    </div>
+                    <p><strong>Description:</strong> {pkg.package_description}</p>
+                    <div className="package-enquire-link">
+                      <Link to={`/user_form/${pkg._id}`} className="admin-link">Enquire Now!</Link>
+                    </div>
+
+                  </div>
+                </div>
+              ))
+            )
+          }
+
+        </div>
       </div>
     </div>
   );

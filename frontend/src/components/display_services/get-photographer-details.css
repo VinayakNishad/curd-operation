@@ -35,54 +35,48 @@ html{
     color: #333;
   }
   
-  /* Image Section */
-  .image-container {
-    padding: 1rem;
-    background-color: var(--body-clt);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .get-photographer-image-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto, 150px);
-    gap: 1px;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--line-clr);
-  }
-  
-  /* Specific layout */
-  .grid-cell:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  .grid-cell:nth-child(2),
-  .grid-cell:nth-child(3),
-  .grid-cell:nth-child(4),
-  .grid-cell:nth-child(5) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-  
-  .grid-cell {
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-  }
-  
-  .get-photographer-grid-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.3s ease;
-    display: block;
-  }
-  
-  .get-photographer-grid-image:hover {
-    transform: scale(1.03);
-  }
+/* Fixed size image container */
+.image-container {
+  padding: 1rem;
+  background-color: var(--body-clt);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  overflow-y: auto; /* scrolls if content overflows */
+}
+
+/* Responsive image grid inside fixed container */
+.get-photographer-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* dynamic based on space */
+  gap: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--line-clr);
+  padding: 6px;
+  max-height: 100%;
+}
+
+/* Image grid cells */
+.grid-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 100px; /* consistent image cell height */
+}
+
+/* Image styling */
+.get-photographer-grid-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.get-photographer-grid-image:hover {
+  transform: scale(1.03);
+}
+
   
   /* Overlays */
   .overlay {
@@ -111,4 +105,39 @@ html{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
-  
+  .Button {
+    display: flex;
+    background-color: var(--accent-clr);
+    color: var(--body-clt);
+    padding: 8px 16px;
+    width: fit-content;
+    border-radius: 4px;
+    gap: 4px;
+    text-decoration: none;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+.Button{
+    text-decoration: none;
+    width: fit-content;
+    height: fit-content;
+}
+.Button:hover{
+    color: #000000;
+    box-shadow: 0 0 4px, 0 0 4px black;
+}
+
+.modal-image {
+  margin: 0 auto;
+  height: 600px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.sub-event-card-container {
+  margin: 0 auto;
+  width: 90%;
+}

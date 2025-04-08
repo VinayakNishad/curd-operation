@@ -32,7 +32,7 @@ const Display_service = (props) => {
     };
 
     return (
-        <p>
+        <p className='display-service'>
             {
                 props.parsed.length > 0 ?
                     (<>
@@ -57,28 +57,35 @@ const Display_service = (props) => {
                                 console.error("Failed to parse photographers:", err);
                             }
 
-                            return Array.isArray(photographers)
-                                ? photographers.map((name, index) => (
-                                    <span
-                                        key={index}
-                                        style={{
-                                            marginLeft: "10px",
-                                            color: "black", // note: this overrides earlier "blue"
-                                            cursor: "pointer",
-                                            textDecoration: "none",
-                                            padding: "8px 16px",
-                                            border: "1px solid #dfdfdf",
-                                            borderRadius: "8px",
-                                            whiteSpace: "nowrap",  // ✅ fix
-                                            boxShadow: "0 0 4px, 0 0 4px black"
-                                        }}
+                            return (
+                                <div className='service-display'>
+                                    {
+                                        Array.isArray(photographers)
+                                            ? photographers.map((name, index) => (
+                                                <span
 
-                                        onClick={() => { props.setService(props.serviceType); handlePhotographerClick(name, props.serviceType) }}
-                                    >
-                                        {name}
-                                    </span>
-                                ))
-                                : null;
+                                                    key={index}
+                                                    style={{
+                                                        marginLeft: "10px",
+                                                        color: "black", // note: this overrides earlier "blue"
+                                                        cursor: "pointer",
+                                                        textDecoration: "none",
+                                                        padding: "8px 16px",
+                                                        border: "1px solid #dfdfdf",
+                                                        borderRadius: "8px",
+                                                        whiteSpace: "nowrap",  // ✅ fix
+                                                        boxShadow: "0 0 4px, 0 0 4px black"
+                                                    }}
+
+                                                    onClick={() => { props.setService(props.serviceType); handlePhotographerClick(name, props.serviceType) }}
+                                                >
+                                                    {name}
+                                                </span>
+                                            ))
+                                            : null
+                                    }
+                                </div>
+                            )
                         })()}
                     </>) : null
             }
