@@ -66,9 +66,7 @@ const FetchSubEvent = (props) => {
                     </span>
                   </a>
                 </div>
-
               </div>
-
             ))}
           </div>
 
