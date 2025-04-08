@@ -32,6 +32,8 @@ import AnniversaryPackage from './Packages/AnniversaryPackages.js';
 import BirthdayPackage from './Packages/BirthdayPackages.js';
 import BabyShowerPackage from './Packages/BabyShowerPackages.js';
 
+import PackageModel from './Packages/WeddingPackages.js';
+import UserDataModel from './user_data.js';
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
@@ -549,5 +551,46 @@ app.get("/get_packages", async (req, res) => {
     }
 });
 
+// POST: Save user enquiry
+app.post("/user_form", async (req, res) => {
+    try {
+      const { user_name, email, location, phone, package_id } = req.body;
+  
+      const newUserData = new UserDataModel({
+        user_name,
+        email,
+        location,
+        phone,
+        package_id
+      });
+  
+      await newUserData.save();
+      res.status(201).json({ message: "User enquiry saved successfully!" });
+    } catch (error) {
+      console.error("Error saving user data:", error);
+      res.status(500).json({ message: "Failed to save user data." });
+    }
+  });
+  
+  app.get("/admin_home", async (req, res) => {
+    try {
+      const users = await UserDataModel.find();
+      const enrichedUsers = await Promise.all(
+        users.map(async (user) => {
+          const pkg = await PackageModel.findById(user.package_id);
+          return {
+            ...user._doc,
+            packageDetails: pkg || null
+          };
+        })
+      );
+  
+      res.json(enrichedUsers);
+    } catch (error) {
+      console.error("Error fetching admin dashboard data:", error);
+      res.status(500).json({ message: "Server error" });
+    }
+  });
+  
 
 app.listen(3001, () => console.log("Server running on port 3001"));
