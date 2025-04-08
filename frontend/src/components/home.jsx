@@ -8,17 +8,6 @@ import About from "./About";
 import Services from "./services";
 import Event from "./event";
 const Home = (props) => {
-  // const [sidebarOpen, setSidebarOpen] = useState(true);
-  // const [submenuOpen, setSubmenuOpen] = useState({});
-
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!sidebarOpen);
-  // };
-
-  // const toggleSubMenu = (menu) => {
-  //   setSubmenuOpen((prev) => ({ ...prev, [menu]: !prev[menu] }));
-  // };
-
   return (
     <>
       <header className="header">
@@ -32,12 +21,9 @@ const Home = (props) => {
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." id="search"></input>
-          </div>
+          
           <div className="authentication">
-            <a href="#" className="active" id="sign-in">Sign In</a>
-            <a href="#" className="de-active" id="sign-out">Sign Out</a>
+          <Link to="/Login" className="active" id="sign-in">Admin login <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg></Link>
           </div>
         </nav>
       </header>

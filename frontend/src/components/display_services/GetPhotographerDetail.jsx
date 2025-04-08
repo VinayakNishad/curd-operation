@@ -1,7 +1,3 @@
-// each photographer in the list+
-
-
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -34,7 +30,7 @@ const GetPhotographerDetail = (props) => {
     return (
         <div className="main-container">
             <div className="image-container">
-                <span><h2>{props.service} Samples</h2>
+                <span ><h2>{props.service} Samples</h2>
                     <Link to={`/uploadImages/${studioId}`} className="Button">Add Sample Images</Link>
                 </span>
                 {images.length > 0 ? (

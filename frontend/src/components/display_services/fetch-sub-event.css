@@ -26,23 +26,25 @@ html {
 .fetch-sub-events {
     padding: 0px;
     margin: 0;
+  
 }
 
 .sub-event-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 16px;
     margin-top: 20px;
     align-items: center;
 }
 
 .sub-event-card {
-    border: 1px solid #ddd;
+    border: 1px solid var(--accent-clr);
     border-radius: 8px;
     padding: 16px;
     width: 240px;
-    height: 120px;
-    box-shadow: 0 2px 5px var(--hover-clr);
+    height: 200px;
+    overflow: hidden;
+    box-shadow: 0 0px 4px,0 0 4px var(--hover-clr);
     background: var(--body-clt);
 }
 .sub-event-card:hover {
@@ -86,4 +88,41 @@ html {
 .addButton span:hover{
     background-color: var(--hover-clr);
 }
-/* Whatsapp */
+.sub-event-card {
+    border: 1px solid var(--accent-clr);
+    border-radius: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 200px; /* Increased height for content + button */
+    overflow: hidden;
+    box-shadow: 0 0px 4px, 0 0 4px var(--hover-clr);
+    background: var(--body-clt);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.enquire {
+    margin-top: auto; /* Pushes this div to the bottom */
+}
+
+.enquire a {
+    text-decoration: none;
+    background-color: var(--accent-clr);
+    color: var(--base-clr);
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    padding: 6px;
+    gap: 6px;
+}
+
+.enquire a:hover {
+    background-color: var(--accent-clr);
+    color: var(--active-text-clr);
+    box-shadow: 0 0 4px, 0 0 4px black;
+}

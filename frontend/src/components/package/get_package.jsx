@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../style.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import DisplayService from "./display_service";
-
-import './package.css'
+import './get-package.css'
 
 const GetPackage = (props) => {
   const [packages, setPackages] = useState([]);
@@ -56,23 +54,24 @@ const GetPackage = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="package-container">
       <h2>All Packages</h2>
-      <div className="card-grid">
+      <Link to={"/add_package"} className="add_package">Add Package</Link>
+      <div className="package-card-grid">
         {
           packages.length < 0 ? (
             <p>No packages found.</p>) : (
             packages.map((pkg) => (
-              <div className="card" key={pkg._id}>
-                {/* <img
+              <div className="package-card" key={pkg._id}>
+                <img
                   src={`http://localhost:3001/${pkg.package_image}`}
                   alt={pkg.package_name}
-                  className="card-img"
-                /> */}
-                <div className="card-body">
+                  className="package-card-img"
+                />
+                <div className="package-card-body">
                   <h3>{pkg.package_name}</h3>
                   <strong> ₹{pkg.package_price}</strong>
-                  <div className="services">
+                  <div className="package-services">
                     <DisplayService parsed={pkg.package_photographer} handlePhotographerClick={handlePhotographerClick} serviceType="Photographer" setService={props.setService} />
                     <DisplayService parsed={pkg.package_hall} handlePhotographerClick={handlePhotographerClick} serviceType="Hall" setService={props.setService} />
                     <DisplayService parsed={pkg.package_caterer} handlePhotographerClick={handlePhotographerClick} serviceType="Caterer" setService={props.setService} />
@@ -80,7 +79,7 @@ const GetPackage = (props) => {
                     <DisplayService parsed={pkg.package_decoration} handlePhotographerClick={handlePhotographerClick} serviceType="Decoration" setService={props.setService} />
                   </div>
                   <p><strong>Description:</strong> {pkg.package_description}</p>
-                  <div className="enquire-link">
+                  <div className="package-enquire-link">
                     <Link to={`/user_form/${pkg._id}`} className="admin-link">Enquire Now!</Link>
                   </div>
 
@@ -89,7 +88,7 @@ const GetPackage = (props) => {
             ))
           )
         }
-        <Link to={"/add_package"}>Add Package</Link>
+
       </div>
     </div>
   );

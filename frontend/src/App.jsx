@@ -9,7 +9,9 @@ import Contact from "./components/contact";
 import FetchSubEvent from "./components/display_services/fetch_sub_event";
 import Package from "./components/package/add-package";
 import GetPackage from "./components/package/get_package";
-
+import Login from "./components/Login";
+import UserForm from "./components/package/Userform";
+  import AdminDashboard from "./components/package/admin_home";
 import { useState } from "react";
 const App = () => {
 
@@ -30,6 +32,9 @@ const App = () => {
         <Route path="/studios/:studioId/subevents" element={<FetchSubEvent/>} />
         <Route path="/add_package" element={<Package service={service} packageType={packageType}/>}/>
         <Route path="/get_package" element={<GetPackage setService={setService} packageType={packageType}/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/user_form/:packageId" element={<UserForm />} />
+        <Route path="/admin_home" element={<AdminDashboard/>}/>
       </Routes>
     </BrowserRouter>
   );
