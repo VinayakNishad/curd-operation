@@ -19,7 +19,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="admin-home-container">
       <h2>Admin Dashboard - User Enquiries</h2>
       {enquiries.length === 0 ? (
         <p>No enquiries found.</p>

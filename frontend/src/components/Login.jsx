@@ -35,6 +35,7 @@ const Login = () => {
                             className='form-input'
                             id='admin_email'
                             autoComplete='off'
+                            autoCapitalize='characters'
                             value={admin_email}
                             onChange={(e) => setEmail(e.target.value)}
                         />

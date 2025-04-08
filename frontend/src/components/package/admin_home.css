@@ -1,12 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+}
+
+:root {
+  --base-clr: #e9e6ff;
+  --line-clr: #E6E6E6;
+  --hover-clr: #b3a9ff;
+  --body-clt: #ffffff;
+  --text-clr: #515151;
+  --accent-clr: #5d47ff;
+  --secondarr-text-clr: #9d91ff;
+  --active-text-clr: #000000;
+  --card-border: #cfcfcf;
+}
+
+.admin-home-container {
+  background-color: var(--body-clt);
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(93, 71, 255, 0.1);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.admin-home-container h2 {
+  color: var(--accent-clr);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
 }
 
 .card {
-  background: #fff;
+  background-color: var(--base-clr);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(93, 71, 255, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(93, 71, 255, 0.2);
+}
+
+.card-body h3 {
+  color: var(--accent-clr);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--line-clr);
+  padding-bottom: 4px;
+}
+
+.card-body p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: var(--text-clr);
+}
+
+.card-body strong {
+  color: var(--active-text-clr);
 }
