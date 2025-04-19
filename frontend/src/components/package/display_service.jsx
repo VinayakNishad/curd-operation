@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Display_service = (props) => {
+    console.log(props);
+    
     const navigate = useNavigate();
 
     const handlePhotographerClick = async (name, serviceType) => {
@@ -42,6 +44,8 @@ const Display_service = (props) => {
 
                             try {
                                 let parsed = props.parsed;
+                                console.log("parsed", props.parsed);
+                                
 
                                 // Handle nested stringified JSON
                                 while (typeof parsed === "string") {

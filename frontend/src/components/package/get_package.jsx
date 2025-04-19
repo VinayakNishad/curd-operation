@@ -103,11 +103,11 @@ const GetPackage = (props) => {
                     <h3>{pkg.package_name}</h3>
                     <strong> ₹{pkg.package_price}</strong>
                     <div className="package-services">
-                      <DisplayService className="display-service" parsed={pkg.package_photographer} handlePhotographerClick={handlePhotographerClick} serviceType="Photographer" setService={props.setService} />
-                      <DisplayService className="display-service" parsed={pkg.package_hall} handlePhotographerClick={handlePhotographerClick} serviceType="Hall" setService={props.setService} />
-                      <DisplayService className="display-service" parsed={pkg.package_caterer} handlePhotographerClick={handlePhotographerClick} serviceType="Caterer" setService={props.setService} />
-                      <DisplayService className="display-service" parsed={pkg.package_bartender} handlePhotographerClick={handlePhotographerClick} serviceType="Bertender" setService={props.setService} />
-                      <DisplayService className="display-service" parsed={pkg.package_decoration} handlePhotographerClick={handlePhotographerClick} serviceType="Decoration" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_photographer || []} handlePhotographerClick={handlePhotographerClick} serviceType="Photographer" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_hall || []} handlePhotographerClick={handlePhotographerClick} serviceType="Hall" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_caterer || []} handlePhotographerClick={handlePhotographerClick} serviceType="Caterer" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_bartender || []} handlePhotographerClick={handlePhotographerClick} serviceType="Bertender" setService={props.setService} />
+                      <DisplayService className="display-service" parsed={pkg.package_decoration || []} handlePhotographerClick={handlePhotographerClick} serviceType="Decoration" setService={props.setService} />
                     </div>
                     <p><strong>Description:</strong> {pkg.package_description}</p>
                     <div className="package-enquire-link">
