@@ -1,15 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
-    --base-clr:#e9e6ff;
-    --line-clr:#E6E6E6;
-    --hover-clr:#b3a9ff;
-    --body-clt:#ffffff;
-    --text-clr:#515151;
-    --accent-clr:#5d47ff;
-    --secondarr-text-clr:#9d91ff;
-    --active-text-clr:#000000;
-    --card-border:#cfcfcf;
-}
+
 *{
     margin: 0;
     padding: 0;
@@ -107,24 +96,25 @@ html{
 
   .Button {
     display: flex;
-    background-color: var(--accent-clr);
+    align-items: center;
+    background-color: var(--secondarr-text-clr);
     color: var(--body-clt);
     padding: 8px 16px;
     width: fit-content;
     border-radius: 4px;
-    gap: 4px;
+    gap: 6px;
+    font-weight: 600;
     text-decoration: none;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-}
-.Button{
-    text-decoration: none;
-    width: fit-content;
-    height: fit-content;
+    margin: 20px 0px;
 }
 .Button:hover{
-    color: #000000;
+    color: var(--btn-text);
+    background-color: var(--hover-clr);
     box-shadow: 0 0 4px, 0 0 4px black;
+    transition: 0.3s;
+    transform: scale(1.02);
 }
 
 .modal-image {
@@ -132,12 +122,15 @@ html{
   height: 600px;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    filter: invert(1);
-}
-
 .sub-event-card-container {
   margin: 0 auto;
   width: 90%;
+}
+.edit-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-btn svg{
+  margin-left: 4px;
 }

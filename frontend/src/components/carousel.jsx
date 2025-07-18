@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./carousel.css";
 
-const images = [
-  "https://picsum.photos/id/1015/800/400",
-  "https://picsum.photos/id/1016/800/400",
-  "https://picsum.photos/id/1018/800/400",
-  "https://picsum.photos/id/1020/800/400"
-];
+import image1 from "./carouselImages/image1.png";
+import image2 from "./carouselImages/image2.png";
+import image3 from "./carouselImages/image3.png";
+import image4 from "./carouselImages/image4.png";
+
+const images = [image1, image2, image3, image4];
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -1,20 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
-    --base-clr:#e9e6ff;
-    --line-clr:#E6E6E6;
-    --hover-clr:#b3a9ff;
-    --body-clt:#ffffff;
-    --text-clr:#515151;
-    --accent-clr:#5d47ff;
-    --secondarr-text-clr:#9d91ff;
-    --active-text-clr:#000000;
-    --card-border:#cfcfcf;
-}
 *{
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
-}
+    scroll-behavior: smooth;}
 html{
     font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5rem;
@@ -36,22 +23,29 @@ html{
     line-height: 3.5rem;
 
   }
-  .intro-carousel-image {
-    width: 100%;
-    height: auto;
-    display: flex;
-  }
+.intro-carousel-image {
+  width: 100%;
+  height: 40vh;          /* 75% of the viewport height */
+  object-fit: cover;     /* Crop the image without stretching */
+  display: block;
+}
+
+
   .carousel-text {
-    display: block;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     font-family: Poppins, sans-serif;
-    top: 25%;
     color: var(--active-text-clr);
-    padding: 50px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 0 8px, 0 10px 40px black;
-    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
-    border-radius: 10px; /* optional: for smoother edges */
+    box-shadow: 0 0 8px, 0 10px 80px black;
+    background-color: rgba(0, 0, 0, 0.6); 
+    border-radius: 10px;
   }
   
   .carousel-text h1{
@@ -63,3 +57,38 @@ html{
     font-size: 24px;
     color: white;
   }
+/* Responsive for tablets */
+@media (max-width: 992px) {
+  .carousel-text {
+    top: 35%;
+    max-width: 90%;
+    padding: 15px 30px;
+     line-height: 1.5rem;
+  }
+
+  .carousel-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .carousel-text p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .carousel-text {
+    top: 10%;
+    max-width: 90%;
+    padding: 10px 20px;
+         line-height: 1.2rem;
+  }
+
+  .carousel-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .carousel-text p {
+    font-size: 0.8rem;
+  }
+}

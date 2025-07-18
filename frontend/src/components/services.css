@@ -1,25 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-:root{
-    --base-clr:#e9e6ff;
-    --line-clr:#E6E6E6;
-    --hover-clr:#b3a9ff;
-    --body-clt:#ffffff;
-    --text-clr:#515151;
-    --accent-clr:#5d47ff;
-    --secondarr-text-clr:#9d91ff;
-    --active-text-clr:#000000;
-    --card-border:#cfcfcf;
-}
-*{
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-}
-html{
-    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.5rem;
-    scroll-behavior: smooth;
-}
+@import url("style.css");
 .services-section{
     display: grid;
     background-color: var(--body-clt);
@@ -33,7 +12,7 @@ html{
 .services-section .service-list{
     display: grid;
     grid-auto-flow: column;
-    gap: 16px; /* Adds space between cards */
+    gap: 16px;
     overflow-x: auto;
 }
 .services-section .service-card {
@@ -56,17 +35,13 @@ html{
 
 .services-section .service-card:hover{
     transform: scale(1.02);
-    box-shadow: 0 0 8px , 0  0 2px #5d47ff inset;
+    box-shadow: 0 0 8px , 0  0 2px #9900ff;
 }
 .enquire{
     text-decoration: none;
     border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 16px;
     position: relative;
-    z-index: 1;
     top: 4px;
     margin-top: auto;
 }
@@ -77,19 +52,3 @@ html{
     align-items: center;
     padding: 4px;
 } 
-.enquire a{
-    text-decoration: none;
-    background-color: var(--accent-clr);
-    color: var(--base-clr);
-    border-radius: 4px;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-}
-.enquire a:hover{
-    background-color: var(--accent-clr);
-    color: var(--active-text-clr);
-    box-shadow: 0 0 4px,0 0 4px black;
-}
