@@ -52,10 +52,13 @@ const asyncHandler = fn => (req, res) =>
         err => res.status(500).json({ error: err.message }));
 
 
-app.use(express.static("./front-end/build"));
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "front-end", "build", "index.html"));
+// filepath: c:\Users\vn072\OneDrive\Pictures\Documents\GitHub\curd-operation\back-end\server.js
+// ...existing code...
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
+// ...existing code...
 
 app.post("/", asyncHandler(
     async (req, res) =>
