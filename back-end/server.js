@@ -42,7 +42,7 @@ app.use(express.json());
 dotenv.config();
 connectDB();
 const __dirname = path.resolve();
-mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect(process.env.MONGODB_URI);
 
 const PORT = process.env.PORT || 3001;
 
