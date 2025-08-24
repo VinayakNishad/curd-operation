@@ -46,6 +46,11 @@ const asyncHandler = fn => (req, res) =>
         err => res.status(500).json({ error: err.message }));
 
 
+app.use(express.static("./front-end/build"));
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "front-end", "build", "index.html"));
+});
+
 app.post("/", asyncHandler(
     async (req, res) =>
         res.json(
