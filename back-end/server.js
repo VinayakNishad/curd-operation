@@ -10,7 +10,8 @@ import fs from "fs";
 import PhotographerSubEvent from './Photographer/PhotographerSubEvent.js';
 import PhotographerSampleModel from './Photographer/PhotographerSampleSchema.js';
 import Contact from './contact.js';
-
+import dotenv from 'dotenv';
+import connectDB from './db.js';
 import HallStudio from './Hall/HallStudio.js';
 import HallSubEvent from './Hall/HallSubEvent.js';
 import HallSampleModel from './Hall/HallSampleSchema.js';
@@ -38,8 +39,13 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // For form submissions
 app.use(express.json());
+dotenv.config();
+connectDB();
+const __dirname = path.resolve();
+mongoose.connect(process.env.MONGODB_URI);
 
-mongoose.connect("mongodb://127.0.0.1:27017/EventManagement");
+const PORT = process.env.PORT || 3001;
+
 
 const asyncHandler = fn => (req, res) =>
     fn(req, res).catch(
@@ -756,4 +762,4 @@ app.post("/user_form", async (req, res) => {
   });
   
 
-app.listen(3001, () => console.log("Server running on port 3001"));
+app.listen(PORT, () => console.log("Server running on port " + PORT));
